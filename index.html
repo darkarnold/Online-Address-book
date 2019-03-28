@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <section class="form">
-      <form class=""  action="index.html" method="post">
+      <form id="contactForm">
         <div class="form">
           <div class="form-group">
             <label for="fname">First Name</label>
@@ -50,10 +50,17 @@
           </div>
 
         </div>
-        <button type="submit"  id= "submit"class="btn btn-primary">Submit</button>
+        <button type="submit"  id= "submit"class="btn btn-success">Add Contact</button>
+        <button type="" id="show-contact" class="btn btn-primary"> Show Contact Information</button>
 
       </form>
     </section>
+    <!--- Display contact information -->
+    <div id="contact-list">
+      <section id="info">
+        
+      </section>
+    </div>
   </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- <script src="js/contact.js"></script> -->

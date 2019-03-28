@@ -19,7 +19,7 @@ This file contains several functions that fullfill the requirements of the Js Ob
 var contactsBin = []
 
 //This is the new contact constructor function.
-function contact (firstName, secondName, phoneNumber, email, street, city, country){
+ function contact (firstName, secondName, phoneNumber, email, street, city, country){
   this.firstName = firstName;
   this.secondName = secondName;
   this.phoneNumber = phoneNumber;
@@ -36,7 +36,7 @@ function contact (firstName, secondName, phoneNumber, email, street, city, count
   addressBook.push([this.ID,this.firstName,[this]]);
   //pushes the new contact contained within its own mini array to the address book in the format [this.ID,this.firstName,[this]]
 }
-
+export contact;
 
 /*Searches through the addressBook for a contact with a matching ID
 -The mini array containing the contact details in the address book is in the format
@@ -220,4 +220,4 @@ contactEdit(contactID, contactField, newInput, a, b, c)
 
 // Export the function contact
 //export function contact(){...};
-module.exports = contact;
+//module.exports = contact;

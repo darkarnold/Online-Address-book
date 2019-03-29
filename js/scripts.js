@@ -77,20 +77,43 @@ $(document).ready(function(){
     //$("#info").append(addressBook[count][2][0].secondName);
   alert(addressBook);
   alert(addressBook[count][2][0]);
+  // clears form after subnitting
   $('#contactForm').trigger('reset');
 
-      $("#info").append(`<p>
-        <a data-toggle="collapse" href="#` + addressBook[count][2][0].secondName + `" role="link" aria-expanded="false" aria-controls="`+ addressBook[count][2][0].secondName +`">` + addressBook[count][2][0].firstName +  `</a><br>
-        <div class="collapse multi-collapse" id="`+ addressBook[count][2][0].secondName   +`"> `+ addressBook[count][2][0].secondName + `\n` + addressBook[count][2][0].phoneNumber + `</div>
-      </p>
-  `)
-  count++;
-  });
-  $("#show-contact").click(function(){
 
-    //alert(addressBook);
-    //alert(count);
+
+  count++;
+
+$("#show-contact").click(function(){
+  $('#info').append(`<span id="dispFname">First Name:</span><br>
+  <span id="dispLname">Last Name:</span><br>
+  <span id="dispEmail">Email:</span><br>
+  <span id="dispPhone">Telephone Number:</span><br>
+  <span id="dispStreet">Street:</span><br>
+  <span id="dispCity">City:</span><br>
+  <span id="dispCountry">Country:</span>
+`)
+$("#info").append(`<p>
+  <a data-toggle="collapse" href="#` + person.secondName + `" role="link" aria-expanded="false" aria-controls="`+ person.secondName +`">` + person.firstName +  `</a><br>
+  <div class="collapse multi-collapse" id="`+ person.secondName   +`"> `+ person.secondName + `\n` + person.phoneNumber + `</div>
+</p>
+`)
+  //$("#info").show();
+  $("#dispFname").text(person.firstName);
+  $("#dispLname").text(person.secondName);
+  $("#dispEmail").text(person.email);
+  $("#dispPhone").text(person.phoneNumber);
+  $("#dispStreet").text(person.address.street);
+  $("#dispCity").text(person.address.city);
+  $("#dispCountry").text(person.address.country);
+
+
+  //alert(addressBook);
+  //alert(count);
+});
+
   });
+
 
 
 });

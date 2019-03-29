@@ -2,11 +2,14 @@
 $(document).ready(function(){
 
 
+
   // hides the contact-List
   $("#info").hide();
   // Address Book Array to store the contacts created
-  var addressBook =[]
+  var addressBook =[];
+  var clickFunctions = [];
   var count = 0;
+
 
   /*Searches through the addressBook for a contact with a matching ID
   -The mini array containing the contact details in the address book is in the format
@@ -29,6 +32,7 @@ $(document).ready(function(){
     //};
   };*/
   $("#submit").click(function(event) {
+    alert(count)
     // Prevent the page from reloading
     event.preventDefault();
 
@@ -77,43 +81,45 @@ $(document).ready(function(){
     //$("#info").append(addressBook[count][2][0].secondName);
   alert(addressBook);
   alert(addressBook[count][2][0]);
-  // clears form after subnitting
   $('#contactForm').trigger('reset');
 
 
 
+ $("#info").append(`
+  <div>
+    <button class="collapsible" id = "`+ addressBook[count][2][0].firstName + addressBook[count][2][0].ID +`">`+ addressBook[count][2][0].firstName +`</button>
+    <div class="content" id = "`+ addressBook[count][2][0].secondName + addressBook[count][2][0].ID +`">
+    `+ addressBook[count][2][0].firstName + `<br>`+ addressBook[count][2][0].secondName +`
+    </div>`)
+
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    var content = document.getElementById(``+ addressBook[count][2][0].secondName + addressBook[count][2][0].ID +``);
+    content.style.display === "none"
+
+    alert(addressBook[count][2][0].firstName);
+    alert(addressBook[count][2][0].secondName);
+
+    $(`#`+ addressBook[count][2][0].firstName + addressBook[count][2][0].ID +``).click(function() {
+      //this.classList.toggle("active");
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+
   count++;
-
-$("#show-contact").click(function(){
-  $('#info').append(`<span id="dispFname">First Name:</span><br>
-  <span id="dispLname">Last Name:</span><br>
-  <span id="dispEmail">Email:</span><br>
-  <span id="dispPhone">Telephone Number:</span><br>
-  <span id="dispStreet">Street:</span><br>
-  <span id="dispCity">City:</span><br>
-  <span id="dispCountry">Country:</span>
-`)
-$("#info").append(`<p>
-  <a data-toggle="collapse" href="#` + person.secondName + `" role="link" aria-expanded="false" aria-controls="`+ person.secondName +`">` + person.firstName +  `</a><br>
-  <div class="collapse multi-collapse" id="`+ person.secondName   +`"> `+ person.secondName + `\n` + person.phoneNumber + `</div>
-</p>
-`)
-  //$("#info").show();
-  $("#dispFname").text(person.firstName);
-  $("#dispLname").text(person.secondName);
-  $("#dispEmail").text(person.email);
-  $("#dispPhone").text(person.phoneNumber);
-  $("#dispStreet").text(person.address.street);
-  $("#dispCity").text(person.address.city);
-  $("#dispCountry").text(person.address.country);
-
-
-  //alert(addressBook);
-  //alert(count);
-});
-
+  alert(count)
   });
 
+
+  //$("#show-contact").click(function(){
+
+    //alert(addressBook);
+    //alert(count);
+  //});
 
 
 });

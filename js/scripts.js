@@ -5,17 +5,13 @@ $(document).ready(function(){
 
   // hides the contact-List
   $("#info").hide();
-
   // Address Book Array to store the contacts created
   var addressBook =[];
-  var count = 0;
-
+  var count = 0; //Counts the number of contacts currently in the addressBook
 
   $("#submit").click(function(event) {
     // Prevent the page from reloading
     event.preventDefault();
-
-
 
 
     // Variables to get information from the form fields
@@ -43,11 +39,11 @@ $(document).ready(function(){
       //pushes the new contact contained within its own mini array to the address book in the format [this.ID,this.firstName,[this]]
 
 
-    };
+    }
+
 
   // Function call for contact, creating a new object in the addressBook array using details from the form
   var person = new contact (firstName, lastName, phone, email, street, city, country);
-
 
   //Resets the form every time a new contact is entered.
   $('#contactForm').trigger('reset');
@@ -57,7 +53,7 @@ $(document).ready(function(){
   Appends a div containing the first name of the new contact to the info div (which is invisible by default) and adds
   the contact details as a separate div right under the firstName div
   */
- $("#info").append(`
+  $("#info").append(`
   <div>
     <a href="#" class="collapsible" id = "`+ person.firstName + person.ID +`">`+ person.firstName +`</a>
     <div class="content" id = "`+ person.secondName + person.ID +`">
@@ -68,12 +64,13 @@ $(document).ready(function(){
     //Hides the div containing contact details so that only the contact firstName is visible.
     $(`#`+ person.secondName + person.ID +``).hide();
 
+
     //Assigns variables to make accessing the contact name and contact details easier
     var coll = document.getElementsByClassName("collapsible");
-    var content = document.getElementById(``+ person.secondName + person.ID +``);
+    var content = document.getElementById(``+ addressBook[count][2][0].secondName + addressBook[count][2][0].ID +``);
 
-    //Assigns a collapsible effect to the contact details div such that when the contact firt name is clicked, it toggles the visibility of the details div
-    $(`#`+ person.firstName + person.ID +``).click(function() {
+    //Assigns a collapsible effect to the contact details div such that when the contact first name is clicked, it toggles the visibility of the details div
+    $(`#`+ addressBook[count][2][0].firstName + addressBook[count][2][0].ID +``).click(function() {
       if (content.style.display === "block") {
         content.style.display = "none";
       } else {
@@ -81,7 +78,7 @@ $(document).ready(function(){
       }
     });
 
-  //Increments count to keep track of the number of contacts.
+ //Increments count to keep track of the number of contacts.
   count++;
   alert("Contact added successfuly. " + count + " contacts currently in address book.")
   });
@@ -99,7 +96,6 @@ $(document).ready(function(){
     $("#contactForm").show("slow");
 
   });
-
 
 
 });

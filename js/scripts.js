@@ -32,12 +32,11 @@ $(document).ready(function(){
     //};
   };*/
   $("#submit").click(function(event) {
-    alert(count)
     // Prevent the page from reloading
     event.preventDefault();
 
     // shows the contact List
-    $("#info").show("slow");
+    //$("#info").show("slow");
 
 
 
@@ -87,19 +86,19 @@ $(document).ready(function(){
 
  $("#info").append(`
   <div>
-    <button class="collapsible" id = "`+ addressBook[count][2][0].firstName + addressBook[count][2][0].ID +`">`+ addressBook[count][2][0].firstName +`</button>
-    <div class="content" id = "`+ addressBook[count][2][0].secondName + addressBook[count][2][0].ID +`">
-    `+ addressBook[count][2][0].firstName + `<br>`+ addressBook[count][2][0].secondName +`
+    <a href="#" class="collapsible" id = "`+ person.firstName + person.ID +`">`+ person.firstName +`</a>
+    <div class="content" id = "`+ person.secondName + person.ID +`">
+    First Name:`+ person.firstName + `<br> Second Name:`+ person.secondName +`<br>Phone number:`+ person.phoneNumber
+    +`<br>Email Address:`+ person.email +`<br>Street:`+ person.address.street +`<br>City:`+ person.address.city +`<br>Country:`+ person.address.country +`
     </div>`)
+
+    $(`#`+ person.secondName + person.ID +``).hide();
 
 
 
     var coll = document.getElementsByClassName("collapsible");
     var content = document.getElementById(``+ addressBook[count][2][0].secondName + addressBook[count][2][0].ID +``);
-    content.style.display === "none"
-
-    alert(addressBook[count][2][0].firstName);
-    alert(addressBook[count][2][0].secondName);
+    //content.style.display === "none"
 
     $(`#`+ addressBook[count][2][0].firstName + addressBook[count][2][0].ID +``).click(function() {
       //this.classList.toggle("active");
@@ -111,9 +110,20 @@ $(document).ready(function(){
     });
 
   count++;
-  alert(count)
+  alert("Contact added successfuly. " + count + " contacts currently in address book.")
   });
 
+  $("#show-contact").click(function(event) {
+    $("#info").show("slow");
+    $("#contactForm").hide("slow");
+
+  });
+
+  $("#back-form").click(function(event) {
+    $("#info").hide("slow");
+    $("#contactForm").show("slow");
+
+  });
 
   //$("#show-contact").click(function(){
 
